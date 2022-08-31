@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Home from './pages/Home';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import SingleCake from './pages/SingleCake';
+import AddCake from './pages/AddCake';
+import './assets/styles.css'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <BrowserRouter>
+   <Header/>
+   <Routes>
+    <Route path='/' element={<Home/>}/>
+    <Route path='/single-cake' element={<SingleCake/>}/>
+    <Route path='add-cake' element={<AddCake/>}/>
+    <Route path='*' element={<h2>Page not found</h2>}/>
+   </Routes>
+   <Footer/>
+   </BrowserRouter>
+  
   );
 }
 
