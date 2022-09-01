@@ -6,7 +6,8 @@ const AddCake = () => {
 const sendCake=(event)=>{
     // const newCake={name:'gdgdgd'}
     event.preventDefault()
-        fetch('http://localhost:4000',{
+        fetch(process.env.REACT_APP_API_ENDPOINT,{
+            // fetch('http://localhost:4000',{
             method:'POST',
             headers:{
                 'Content-Type': 'application/json',
@@ -32,7 +33,7 @@ setForm({...form,[event.target.name]:event.target.value})
         <input onChange={event=>handleForm(event)} type='text' placeholder="ex. http//:" name='image' id="image"/>
 
         <label htmlFor=''>Ingedients:</label>
-        <input onChange={event=>handleForm(event)} type='text' placeholder="ex. 2 tbsp of sugar" name='ingedients' id="ingedients" />
+        <input className='ingredients' onChange={event=>handleForm(event)} type='text' placeholder="ex. 2 tbsp of sugar" name='ingedients' id="ingedients" />
 
         <label htmlFor=''>Price:</label>
         <input onChange={event=>handleForm(event)} type='number' min={0}placeholder="ex. 2.59" name='price' id="price"/>
@@ -41,6 +42,7 @@ setForm({...form,[event.target.name]:event.target.value})
         <input onChange={event=>handleForm(event)} type='number' min={0} placeholder="ex. 23.56" name='weight' id="weight"/>
         <button onClick={event=>sendCake(event)}>Add Cake</button>
       </form>
+      
     </div>
   )
 }

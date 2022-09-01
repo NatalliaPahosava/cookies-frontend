@@ -9,7 +9,8 @@ const SingleCake = () => {
     const { name, image, prices, weight, ingredients } = location.state
     const handleDelete = (event) => {
         event.preventDefault()
-        fetch(`http://localhost:4000?name=${name}`, {
+        fetch(`${process.env.REACT_APP_API_ENDPOINT}name=${name}`, {
+        // fetch(`http://localhost:4000/name=${name}`,{
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
@@ -19,9 +20,10 @@ const SingleCake = () => {
         .then(() => navigate('/'))
         .catch((err) => console.error(err))
     }
-  const handleUpdate = (event) => {
+   const handleUpdate = (event) => {
     event.preventDefault()
-    fetch(`http://localhost:4000?name=${name}`, {
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}?name=${name}`, {
+        // fetch(`http://localhost:4000/?name=${name}`, {  
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -40,18 +42,15 @@ setForm({...form , [event.target.name]: event.target.value})
     <div className='container'>
       <div className='single-product'>
         <h1>{name}</h1>
-        <img src={image} alt='' />
+        <img src={image} alt=''/>
         <p>
-          <b>Ingredients: </b>
-          {ingredients}
+          <b>Ingredients:</b>{ingredients}
         </p>
         <p>
-          <b>Price:</b>
-          {prices}$
+          <b>Price:</b>{prices}$
         </p>
         <p>
-          <b>Weight:</b>
-          {weight} pounds
+          <b>Weight:</b>{weight} pounds
         </p>
         {showForm &&(
         <form className='add-form'>

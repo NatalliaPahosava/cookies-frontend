@@ -4,7 +4,8 @@ import { CakeCard } from '../components/CakeCard'
 const Home = () => {
   const [cakes, setCakes] = useState([])
   useEffect(() => {
-        fetch('http://localhost:4000/')
+        // fetch('http://localhost:4000')
+        fetch(process.env.REACT_APP_API_ENDPOINT)
         .then((res) => res.json())
         .then((data) => setCakes(data))
         .catch((err) => console.error(err))
@@ -14,7 +15,7 @@ const Home = () => {
 })
   return (
     <div className='container'>
-      <h1>Home Component</h1>
+      <h1>iBaker</h1>
       <div className='products'>{allCakes}</div>
     </div>
   )
