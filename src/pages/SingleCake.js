@@ -6,24 +6,24 @@ const SingleCake = () => {
     const[showForm,setShowForm]=useState(false)
     const location = useLocation()
     const navigate=useNavigate()
-    const { name, image, prices, weight, ingredients } = location.state
+    const { name, image, price, weight, ingredients } = location.state
     const handleDelete = (event) => {
         event.preventDefault()
-        fetch(`${process.env.REACT_APP_API_ENDPOINT}name=${name}`, {
-        // fetch(`http://localhost:4000/name=${name}`,{
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        })
-        .then((res) => res.json())
-        .then(() => navigate('/'))
-        .catch((err) => console.error(err))
+         fetch(`https://nameless-anchorage-63339.herokuapp.com/?name=${name}`, {
+          // fetch(`http://localhoast:4000?name=${name}`, {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          })
+            .then(res => res.json())
+            .then(() => navigate('/'))
+            .catch(err => console.error(err))
     }
-   const handleUpdate = (event) => {
+    const handleUpdate = (event) => {
     event.preventDefault()
-    fetch(`${process.env.REACT_APP_API_ENDPOINT}?name=${name}`, {
-        // fetch(`http://localhost:4000/?name=${name}`, {  
+    fetch(`https://nameless-anchorage-63339.herokuapp.com/?name=${name}`, {
+        //fetch(`http://localhost:4000?name=${name}`, {  
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -35,8 +35,8 @@ const SingleCake = () => {
       .catch((err) => console.error(err))
   }
 
-  const handleForm=(event)=>{
-setForm({...form , [event.target.name]: event.target.value})
+  const handleForm = e => {
+    setForm({ ...form, [e.target.name]: e.target.value })
   }
   return (
     <div className='container'>
@@ -47,12 +47,12 @@ setForm({...form , [event.target.name]: event.target.value})
           <b>Ingredients:</b>{ingredients}
         </p>
         <p>
-          <b>Price:</b>{prices}$
+          <b>Price:</b>{price}$
         </p>
         <p>
           <b>Weight:</b>{weight} pounds
         </p>
-        {showForm &&(
+        {showForm && (
         <form className='add-form'>
           <h1>Add Cake</h1>
           <label htmlFor=''>Cake Name:</label>
@@ -75,13 +75,13 @@ setForm({...form , [event.target.name]: event.target.value})
             defaultValue={image}
           />
 
-          <label htmlFor=''>Ingedients:</label>
+          <label htmlFor=''>Ingredients:</label>
           <input
             onChange={(event) => handleForm(event)}
             type='text'
             placeholder='ex. 2 tbsp of sugar'
-            name='ingedients'
-            id='ingedients'
+            name='ingredients'
+            id='ingredients'
             defaultValue={ingredients}
           />
 
@@ -89,25 +89,26 @@ setForm({...form , [event.target.name]: event.target.value})
           <input
             onChange={(event) => handleForm(event)}
             type='number'
-            min={0}
+            min={0.00}
             placeholder='ex. 2.59'
             name='price'
             id='price'
-            defaultValue={prices}
+            defaultValue={price}
           />
 
           <label htmlFor=''>Weight:</label>
           <input
             onChange={(event) => handleForm(event)}
             type='number'
-            min={0}
+            min={0.00}
             placeholder='ex. 23.56'
             name='weight'
             id='weight'
             defaultValue={weight}
           />
-          <button onClisk={handleUpdate}>Update Product</button>
-        </form>)}
+          <button onClick={handleUpdate}>Update Product</button>
+        </form>
+        )}
         <button onClick={handleDelete}>Delete Cake</button>
         <button onClick={()=>setShowForm(!showForm)}>Edit Form</button>
       </div>
