@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 import SingleCake from './pages/SingleCake';
 import AddCake from './pages/AddCake';
 import Contact from './pages/Contact';
-import About from './pages/AboutMe';
+import About from './pages/About';
 import './assets/styles.css'
 
 function App() {

@@ -1,29 +1,27 @@
 import { useState } from 'react'
-import { useLocation ,useNavigate} from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const SingleCake = () => {
-    const[form,setForm]=useState({})
-    const[showForm,setShowForm]=useState(false)
-    const location = useLocation()
-    const navigate=useNavigate()
-    const { name, image, price, weight, ingredients } = location.state
-    const handleDelete = (event) => {
-        event.preventDefault()
-         fetch(`https://nameless-anchorage-63339.herokuapp.com/?name=${name}`, {
-          // fetch(`http://localhoast:4000?name=${name}`, {
-            method: 'DELETE',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          })
-            .then(res => res.json())
-            .then(() => navigate('/'))
-            .catch(err => console.error(err))
-    }
-    const handleUpdate = (event) => {
+  const [form, setForm] = useState({})
+  const [showForm, setShowForm] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
+  const { name, image, phone, eventdate, description, zipcode } = location.state
+  const handleDelete = (event) => {
     event.preventDefault()
     fetch(`https://nameless-anchorage-63339.herokuapp.com/?name=${name}`, {
-        //fetch(`http://localhost:4000?name=${name}`, {  
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then(() => navigate('/'))
+      .catch((err) => console.error(err))
+  }
+  const handleUpdate = (event) => {
+    event.preventDefault()
+    fetch(`https://nameless-anchorage-63339.herokuapp.com/?name=${name}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -35,84 +33,105 @@ const SingleCake = () => {
       .catch((err) => console.error(err))
   }
 
-  const handleForm = e => {
+  const handleForm = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
   return (
     <div className='container'>
-      <div className='single-product'>
+      <div className='single-cake'>
         <h1>{name}</h1>
-        <img src={image} alt=''/>
+        <img src={image} alt='' />
         <p>
-          <b>Ingredients:</b>{ingredients}
+          <b>Description:</b>
+          {description}
         </p>
         <p>
-          <b>Price:</b>{price}$
+          <b>Event Date:</b>
+          {eventdate}
         </p>
         <p>
-          <b>Weight:</b>{weight} pounds
+          <b>Zip,State:</b>
+          {zipcode}
         </p>
-        {showForm && (
-        <form className='add-form'>
-          <h1>Add Cake</h1>
-          <label htmlFor=''>Cake Name:</label>
-          <input
-            onChange={(event) => handleForm(event)}
-            type='text'
-            placeholder='ex.Napoleon'
-            name='name'
-            id='name'
-            defaultValue={name}
-          />
+        <p>
+          <b>Phone number:</b>
+          {phone}
+        </p>
+        <div className='update-form'>
+          {showForm && (
+            <form className='add-form'>
+              <h3>Edit Cake</h3>
+              <label htmlFor=''>Your Name:</label>
+              <input
+                onChange={(event) => handleForm(event)}
+                type='text'
+                placeholder='Natalia'
+                name='name'
+                id='name'
+                defaultValue={name}
+              />
 
-          <label htmlFor=''>Cake image:</label>
-          <input
-            onChange={(event) => handleForm(event)}
-            type='text'
-            placeholder='ex. http//:'
-            name='image'
-            id='image'
-            defaultValue={image}
-          />
+              <label htmlFor=''>Cake image link:</label>
+              <input
+                onChange={(event) => handleForm(event)}
+                type='text'
+                placeholder='ex. http//:'
+                name='image'
+                id='image'
+                defaultValue={image}
+              />
 
-          <label htmlFor=''>Ingredients:</label>
-          <input
-            onChange={(event) => handleForm(event)}
-            type='text'
-            placeholder='ex. 2 tbsp of sugar'
-            name='ingredients'
-            id='ingredients'
-            defaultValue={ingredients}
-          />
+              <label htmlFor=''>Description:</label>
+              <input
+                onChange={(event) => handleForm(event)}
+                type='text'
+                placeholder='Vanila cake,french cream...'
+                name='description'
+                id='description'
+                defaultValue={description}
+              />
 
-          <label htmlFor=''>Price:</label>
-          <input
-            onChange={(event) => handleForm(event)}
-            type='number'
-            min={0.00}
-            placeholder='ex. 2.59'
-            name='price'
-            id='price'
-            defaultValue={price}
-          />
-
-          <label htmlFor=''>Weight:</label>
-          <input
-            onChange={(event) => handleForm(event)}
-            type='number'
-            min={0.00}
-            placeholder='ex. 23.56'
-            name='weight'
-            id='weight'
-            defaultValue={weight}
-          />
-          <button onClick={handleUpdate}>Update Product</button>
-        </form>
-        )}
-        <button onClick={handleDelete}>Delete Cake</button>
-        <button onClick={()=>setShowForm(!showForm)}>Edit Form</button>
+              <label htmlFor=''>Event Date:</label>
+              <input
+                onChange={(event) => handleForm(event)}
+                type='text'
+                placeholder='mm/dd/yyyy'
+                name='eventdate'
+                id='eventdate'
+                defaultValue={eventdate}
+              />
+              <label htmlFor=''>Zip,State:</label>
+              <input
+                onChange={(event) => handleForm(event)}
+                type='text'
+                placeholder='10306, New York'
+                name='zipcode'
+                id='zipcode'
+                defaultValue={zipcode}
+              />
+              <label htmlFor=''>Phone number:</label>
+              <input
+                onChange={(event) => handleForm(event)}
+                type='text'
+                placeholder='10306, New York'
+                name='zipcode'
+                id='zipcode'
+                defaultValue={phone}
+              />
+              <button className='btn-sgl' onClick={handleUpdate}>
+                Update Cake
+              </button>
+            </form>
+          )}
+          <button className='btn-sgl' onClick={handleDelete}>
+            Delete Cake
+          </button>
+          <button className='btn-sgl' onClick={() => setShowForm(!showForm)}>
+            Edit Form
+          </button>
+        </div>
       </div>
     </div>
- )
+  )
 }
 export default SingleCake

@@ -1,6 +1,0 @@
-const About=()=>{
-    return(
-        <h1>About our Team</h1>
-    )
-}
-export default About 

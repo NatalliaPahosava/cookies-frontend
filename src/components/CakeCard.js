@@ -1,16 +1,26 @@
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
 
-export const CakeCard=({eachcake})=>{
-    return(
-        <Link state={eachcake} to='/single-cake' className='products-item'>
-        <img src={eachcake.image} alt="" />
-        <h4>{eachcake.name}</h4>
-        <p>
-            <b>Ingredients: </b>{eachcake.ingredients}</p>
-        <p>
-            <b>Price: </b>{eachcake.price}$</p>
-        <p>
-            <b>Weight:</b>{eachcake.weight} pounds</p>
-        </Link>
-    )
+export const CakeCard = ({ eachcake }) => {
+  return (
+    <Link state={eachcake} to='/single-cake' className='cakes-item'>
+      <img src={eachcake.image} alt='' />
+      <h4>Name:{eachcake.name}</h4>
+      <p>
+        <b>Phone Number:</b>
+        {eachcake.phone}
+      </p>
+      <p>
+        <b>Zip, State: </b>
+        {eachcake.zipcode}
+      </p>
+      <p>
+        <b>Event date: </b>
+        {eachcake.eventdate}
+      </p>
+      <p>
+        <b>Description: </b>
+        {eachcake.description}
+      </p>
+    </Link>
+  )
 }
