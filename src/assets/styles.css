@@ -91,8 +91,14 @@ footer {
   display: flex;
   flex-direction: column;
 }
-
+.adding{
+  background-image: url('https://media.istockphoto.com/photos/3d-mockup-podium-with-draped-fabric-in-lavender-color-abstract-modern-picture-id1345448675?b=1&k=20&m=1345448675&s=170667a&w=0&h=PX40wdJl-1YQmszxU-BMUOomp4Zc6vjhYlgZcYUuET8=');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .add-cake {
+
   display: flex;
   height: 70vh;
 }

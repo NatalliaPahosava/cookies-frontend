@@ -22,6 +22,7 @@ const AddCake = () => {
     setForm({ ...form, [event.target.name]: event.target.value })
   }
   return (
+    <div className='adding'>
     <div className='add-cake'>
       <form className='add-form'>
         <h1 id='add-h1'>Add Cake</h1>
@@ -83,6 +84,7 @@ const AddCake = () => {
           Add Cake
         </button>
       </form>
+    </div>
     </div>
   )
 }
