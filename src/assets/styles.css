@@ -25,6 +25,7 @@ li {
 }
 
 li a {
+  
   border: solid white;
   border-radius: 20px;
   display: block;
@@ -219,4 +220,42 @@ footer {
   border-radius: 92px;
   background: #46059579;
   box-shadow: 15px 15px 30px #2b057f, -15px -15px 30px #1d0544;
+}
+.about-text{
+  border: solid white;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 50px;
+  margin: 400px 400px;
+}
+.about-text h4{
+  font-size: 1.5rem;
+  margin-top: 40px;
+}
+.about-text h1{
+  font-size: 2.5rem;
+  margin: 40px;
+}
+.about-ibaker{
+  border: solid white;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  margin: 10px 20px;
+  
+}
+.about-ibaker p{
+  font-size: 1.5rem;
+  margin-top: 20px;
+  padding: 0 60px;
+}
+.about-ibaker h1{
+  font-family: cursive;
+  font-size: 5rem;
+  color: white;
+  margin: 20px;
 }

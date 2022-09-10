@@ -73,7 +73,7 @@ const AddCake = () => {
         <input
           onChange={(event) => handleForm(event)}
           type='text'
-          placeholder='ex. 333-333-33-33'
+          placeholder='ex. 333-333-3333'
           name='phone'
           id='phone'
         />

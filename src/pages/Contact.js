@@ -1,4 +1,5 @@
 import logo from '../image/2.jpeg'
+
 const Contact=()=>{
     return(
         <div className="contact"> 

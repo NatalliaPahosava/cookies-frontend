@@ -24,7 +24,7 @@ const SingleCake = () => {
     fetch(`https://nameless-anchorage-63339.herokuapp.com/?name=${name}`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(form),
     })
@@ -113,9 +113,9 @@ const SingleCake = () => {
               <input
                 onChange={(event) => handleForm(event)}
                 type='text'
-                placeholder='10306, New York'
-                name='zipcode'
-                id='zipcode'
+                placeholder='333-444-5667'
+                name='phone'
+                id='phone'
                 defaultValue={phone}
               />
               <button className='btn-sgl' onClick={handleUpdate}>
