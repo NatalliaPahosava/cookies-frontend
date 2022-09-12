@@ -1,9 +1,9 @@
 const Discount=()=>{
 
 
-    const sendDiscount = (event) => {
+    const sendDiscount = () => {
         alert("Yoor Discount Code is IBaker2022");
-        
+
     }
     return (
     <div className="discount">
@@ -49,7 +49,7 @@ const Discount=()=>{
           name='phone'
           id='phone'
         />
-        <button className='discount-alert' onClick={(event) => sendDiscount(event)}>
+        <button className='discount-alert' onClick={sendDiscount}>
           Get Discount
         </button>
       </form>

@@ -282,6 +282,7 @@ footer {
   margin: 20px;
 }
 .discount{
+  color: #ffffff;
 display: flex;
 flex-direction: column;
 justify-content: center;
